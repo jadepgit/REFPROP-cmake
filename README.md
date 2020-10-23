@@ -51,7 +51,7 @@ cmake .. -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE:FILEPATH=/usr/local/bin/
 ```
 ## Linux Notes
 
-###Linux Prerequisits:
+Linux Prerequisits:
 * Wine 
     * ``mono``  
     * ``wine-gecko`` (If you intend to run the Window's gui front end, you will need gecko for certain document displays.  If you just want the FORTRAN, FLUID, and MIXTURE folders, gecko is optional.
@@ -60,13 +60,15 @@ cmake .. -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE:FILEPATH=/usr/local/bin/
 * git
 * python as you likely want the header file.
 
-##Linux Additional Instructions:
+Linux Additional Instructions:
 1. Purchase RefProp and download the .exe file.
 2. Set up wine to force 32-bit mode.
-3. Install the REFPROPxxxx.ext using wine.
+``"export WINEARCH=win32"``to .bashrc (after line 10).     
+3. Install the NISTxxxx.exe using wine.
+``"wine NISTxxxx.exe"`` (currently NIST2310.exe).
 4. Install REFPROP-cmake per instructions using git clone.
 5. Find the FORTRAN folder in your REFPROP wine install.  Usually located in ~/.wine/drive-c/Program fFiles(x64)/REFPROP/.  Note that .wine is a hidden directory and you must enable hidden directories for graphical file managers to find it. Also this is the location of the MIXTURES and FLUIDS directories.
-6. Copy FORTRAN over to your REFPROP-cmake root directory.  
+6. Copy directory FORTRAN over to your REFPROP-cmake root directory.  
 7. Follow above directions.  Tip: pay attention to the "." and ".." in the cmake commands.
 
 ## General Notes
