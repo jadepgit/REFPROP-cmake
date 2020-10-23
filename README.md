@@ -4,7 +4,7 @@ Small repo with CMake build system for building REFPROP shared library
 
 Why you should use this build system:
 
-* The windows-style mixed-case symbols are export on all platforms (for instance there is **ALWAYS** a ``SETUPdll`` symbol, which means you can write a clean cross-platform interface).  This magic is achieved with export aliases.
+* The windows-style mixed-case symbols are exported on all platforms (for instance there is **ALWAYS** a ``SETUPdll`` symbol, which means you can write a clean cross-platform interface).  This magic is achieved with export aliases.
 * You can easily point the repo at a different version of the REFPROP sources, allowing for building/testing several versions of REFPROP in parallel
 
 Brought to you by Ian Bell, NIST, ian.bell@nist.gov
@@ -49,6 +49,25 @@ The solution is to force cmake to use the brewed python:
 ```
 cmake .. -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE:FILEPATH=/usr/local/bin/python3
 ```
+## Linux Notes
+
+###Linux Prerequisits:
+* Wine 
+    * ``mono``  
+    * ``wine-gecko`` (If you intend to run the Window's gui front end, you will need gecko for certain document displays.  If you just want the FORTRAN, FLUID, and MIXTURE folders, gecko is optional.
+* A fortran compiler
+* Cmake
+* git
+* python as you likely want the header file.
+
+##Linux Additional Instructions:
+1. Purchase RefProp and download the .exe file.
+2. Set up wine to force 32-bit mode.
+3. Install the REFPROPxxxx.ext using wine.
+4. Install REFPROP-cmake per instructions using git clone.
+5. Find the FORTRAN folder in your REFPROP wine install.  Usually located in ~/.wine/drive-c/Program fFiles(x64)/REFPROP/.  Note that .wine is a hidden directory and you must enable hidden directories for graphical file managers to find it. Also this is the location of the MIXTURES and FLUIDS directories.
+6. Copy FORTRAN over to your REFPROP-cmake root directory.  
+7. Follow above directions.  Tip: pay attention to the "." and ".." in the cmake commands.
 
 ## General Notes
 
